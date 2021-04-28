@@ -1,4 +1,4 @@
-package com.mse.ajouFlight.controller;
+package com.mse.ajouFlight.config;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
