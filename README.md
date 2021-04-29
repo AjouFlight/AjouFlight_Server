@@ -1,9 +1,3 @@
-AjouFlight
-<div align="center">
-<img src="./img/logo.png" alt="logo" width="200">
-</div>
-
-
 ## Service Description   
 **Flight shooting game to defeat enemies of the universe** 
 
