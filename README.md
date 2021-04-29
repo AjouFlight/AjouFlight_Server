@@ -1,4 +1,10 @@
- ## Using Tech
+# AjouFlight_Server
+
+## Client Developers
+- YoungWoo Young 
+- Jinseok Hong
+- 
+## Using Tech
  - Spring Boot(Spring Security, JWT, JPA)
  - MySQLDB
  - AWS(EC2,RDS) 
