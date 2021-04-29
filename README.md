@@ -5,7 +5,7 @@ AjouFlight
 
 
 ## Service Description   
-**우주의 적들을 물리치는 비행 슈팅 게임** 
+**Flight shooting game to defeat enemies of the universe** 
 
 
  ## Using Tech
