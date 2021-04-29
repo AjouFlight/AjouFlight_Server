@@ -1,7 +1,3 @@
-## Service Description   
-**Flight shooting game to defeat enemies of the universe** 
-
-
  ## Using Tech
  - Spring Boot(Spring Security, JWT, JPA)
  - MySQLDB
