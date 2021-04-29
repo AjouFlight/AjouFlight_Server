@@ -8,7 +8,7 @@
 
 
   ## ERD
-![임시 ERD](./img/ERD.png)
+![임시 ERD](./img/erd.png)
 
   ## Dependency
 ```
