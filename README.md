@@ -1,9 +1,9 @@
 # AjouFlight_Server
 
-## Client Developers
+## Server Developers
 - YoungWoo Young 
 - Jinseok Hong
-- 
+
 ## Using Tech
  - Spring Boot(Spring Security, JWT, JPA)
  - MySQLDB
