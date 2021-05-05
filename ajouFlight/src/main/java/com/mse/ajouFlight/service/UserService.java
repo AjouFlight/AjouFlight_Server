@@ -1,6 +1,7 @@
 package com.mse.ajouFlight.service;
 
 import com.mse.ajouFlight.domain.User;
+import com.mse.ajouFlight.exception.AleadyExistedUserIdException;
 import com.mse.ajouFlight.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -25,7 +26,7 @@ public class UserService {
         Optional<User> existeduser = userRepository.findByUserId(userId);
 
         if(existeduser.isPresent()){
-            throw new RuntimeException();
+            throw new AleadyExistedUserIdException();
         }
 
         String encodedPassword = passwordEncoder.encode(password);
