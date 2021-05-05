@@ -1,7 +1,7 @@
 # AjouFlight_Server
 
 ## Server Developers
-- YoungWoo Young 
+- YoungWoo Yoo 
 - Jinseok Hong
 
 ## Using Tech
@@ -10,7 +10,7 @@
  - AWS(EC2,RDS) 
 
   ## API WIKI 
-
+- [API 문서](https://github.com/AjouFlight/AjouFlight_Server/wiki)   
 
 
   ## ERD
