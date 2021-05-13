@@ -10,7 +10,7 @@
  - AWS(EC2,RDS) 
 
   ## API WIKI 
-- [API 문서](https://github.com/AjouFlight/AjouFlight_Server/wiki)   
+- [API document](https://github.com/AjouFlight/AjouFlight_Server/wiki)   
 
 
   ## ERD
