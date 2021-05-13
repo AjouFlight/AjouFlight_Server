@@ -1,6 +1,7 @@
 package com.mse.ajouFlight.domain;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.mse.ajouFlight.controller.dto.UserInfoRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,6 +25,7 @@ public class User {
 
     private String userId;
 
+
     private String password;
 
     @ColumnDefault("0")
@@ -35,12 +37,38 @@ public class User {
     @ColumnDefault("0")
     private boolean stage3;
 
+    @ColumnDefault("0")
     private Integer score;
 
-    private Double money;
+    @ColumnDefault("0")
+    private Integer money;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @JsonManagedReference
     private List<Flight> flights;
+
+
+
+    public void modifyUser(UserInfoRequestDto dto){
+        if(dto.isStage1()){
+            this.stage1= dto.isStage1();
+        }
+        if(dto.isStage2()){
+            this.stage2= dto.isStage2();
+        }
+        if(dto.isStage3()){
+            this.stage3= dto.isStage3();
+        }
+        if(dto.getScore()!=null){
+            this.score=dto.getScore();
+        }
+        if(dto.getMoney()!=null){
+            this.money=dto.getMoney();
+        }
+
+    }
+
+
+
 
 }

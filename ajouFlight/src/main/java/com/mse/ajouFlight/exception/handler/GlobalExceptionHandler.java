@@ -2,7 +2,7 @@ package com.mse.ajouFlight.exception.handler;
 
 import com.mse.ajouFlight.exception.AleadyExistedUserIdException;
 import com.mse.ajouFlight.exception.InCorrectPasswordException;
-import com.mse.ajouFlight.exception.InCorrectUserIdException;
+import com.mse.ajouFlight.exception.NotExistedUserException;
 import com.mse.ajouFlight.exception.message.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -18,9 +18,9 @@ public class GlobalExceptionHandler {
         return new ErrorResponse(HttpStatus.BAD_REQUEST,ex.getMessage());
     }
 
-    @ExceptionHandler(InCorrectUserIdException.class)
+    @ExceptionHandler(NotExistedUserException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleInCorrectUserIdException(InCorrectUserIdException ex){
+    public ErrorResponse handleNotExistedUserExceptionException(NotExistedUserException ex){
         return new ErrorResponse(HttpStatus.BAD_REQUEST,ex.getMessage());
     }
 

@@ -1,9 +1,9 @@
 package com.mse.ajouFlight.exception;
 
-public class InCorrectUserIdException extends RuntimeException {
+public class NotExistedUserException extends RuntimeException {
 
     private static final String  message = "존재하지 않는 계정입니다";
-    public InCorrectUserIdException(){
+    public NotExistedUserException(){
         super(message);
     }
 }
