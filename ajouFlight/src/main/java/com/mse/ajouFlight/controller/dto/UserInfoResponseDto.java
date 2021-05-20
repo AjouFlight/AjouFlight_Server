@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @Builder
 public class UserInfoResponseDto {
-    private Long token;
+    private String token;
 
     private boolean stage1;
 

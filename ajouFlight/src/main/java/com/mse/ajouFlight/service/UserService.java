@@ -5,6 +5,7 @@ import com.mse.ajouFlight.controller.dto.UserInfoRequestDto;
 import com.mse.ajouFlight.controller.dto.UserInfoResponseDto;
 import com.mse.ajouFlight.domain.Flight;
 import com.mse.ajouFlight.domain.User;
+import com.mse.ajouFlight.domain.utils.JwtUtil;
 import com.mse.ajouFlight.exception.AleadyExistedUserIdException;
 import com.mse.ajouFlight.exception.InCorrectPasswordException;
 import com.mse.ajouFlight.exception.NotExistedUserException;
@@ -28,6 +29,9 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     //회원가입
     public void createUser(String userId, String password){
@@ -54,8 +58,8 @@ public class UserService {
     }
 
     //유저정보 갱신용
-    public void postUserInfo(UserInfoRequestDto dto, Long token) {
-        User user = userRepository.findById(token)
+    public void postUserInfo(UserInfoRequestDto dto, Long id) {
+        User user = userRepository.findById(id)
                 .orElseThrow(() -> new NotExistedUserException());
 
         user.modifyUser(dto);
@@ -72,6 +76,8 @@ public class UserService {
             throw  new InCorrectPasswordException();
         }
 
+        String token = jwtUtil.createToken(user.getId());
+
         List<Flight> flights = user.getFlights();
         List<FlightDto> flightsN = new ArrayList<>();
 
@@ -81,8 +87,10 @@ public class UserService {
                     .build());
         }
 
+
+
         return  UserInfoResponseDto.builder()
-                .token(user.getId())
+                .token(token)
                 .stage1(user.isStage1())
                 .stage2(user.isStage2())
                 .stage3(user.isStage3())
