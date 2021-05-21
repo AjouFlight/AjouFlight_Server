@@ -1,7 +1,7 @@
 # AjouFlight_Server
 
 ## Server Developers
-- YoungWoo Yoo 
+- YoungWoo Ryu 
 - Jinseok Hong
 
 ## Using Tech
