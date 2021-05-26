@@ -1,6 +1,7 @@
 package com.mse.ajouFlight.service;
 
 import com.mse.ajouFlight.controller.dto.FlightDto;
+import com.mse.ajouFlight.controller.dto.RankingResponseDto;
 import com.mse.ajouFlight.controller.dto.UserInfoRequestDto;
 import com.mse.ajouFlight.controller.dto.UserInfoResponseDto;
 import com.mse.ajouFlight.domain.Flight;
@@ -105,8 +106,19 @@ public class UserService {
     }
 
     //랭킹 조회
-    public List<User> getRanking(){
-        return userRepository.findByRanking();
+    public List<RankingResponseDto> getRanking(){
+        List<User> users =  userRepository.findByRanking();
+
+        List<RankingResponseDto> rankings = new ArrayList<>();
+
+        for(int i=0; i<10; i++){
+            rankings.add(RankingResponseDto.builder()
+                    .userId(users.get(i).getUserId())
+                    .score(users.get(i).getScore())
+                    .build());
+        }
+
+        return rankings;
     }
 
     //비행기 사기

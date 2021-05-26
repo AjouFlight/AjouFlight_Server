@@ -27,12 +27,6 @@ public class LoginController {
     @PostMapping
     public ResponseEntity<ResponseMessage> login(@RequestBody UserDto dto){
 
-        //일치하면 user 고유 id 내려준다.(token 역할)
-//        Token token = Token.builder()
-//                .token(user.getId())
-//                .message("토큰이 발급되었습니다")
-//                .build();
-
         UserInfoResponseDto responseDto = userService.getUserInfo(dto.getUserId(),dto.getPassword());
 
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"로그인 성공", responseDto));

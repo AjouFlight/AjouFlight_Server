@@ -47,12 +47,12 @@ public class UserController {
     }
 
     //랭킹조회
-//    @GetMapping("/ranking")
-//    public ResponseEntity<ResponseMessage> getRanking(){
-//        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"랭킹 목록",userService.getRanking()));
-//    }
+    @GetMapping("/ranking")
+    public ResponseEntity<ResponseMessage> getRanking(){
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"랭킹 목록",userService.getRanking()));
+    }
 
-    //전투기 추가
+    //비행기 추가
     @PostMapping("/flight/{flightId}")
     public ResponseEntity<ResponseMessage> postFlights(Authentication authentication, @PathVariable Long flightId){
         Claims claims = (Claims) authentication.getPrincipal();
@@ -62,7 +62,4 @@ public class UserController {
 
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.CREATED,"비행 추가 완료"));
     }
-
-
-
 }

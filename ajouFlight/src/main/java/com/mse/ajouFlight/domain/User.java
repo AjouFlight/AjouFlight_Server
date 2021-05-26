@@ -47,8 +47,6 @@ public class User {
     @JsonManagedReference
     private List<Flight> flights;
 
-
-
     public void modifyUser(UserInfoRequestDto dto){
         if(dto.isStage1()){
             this.stage1= dto.isStage1();

@@ -12,7 +12,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByUserId(String userID); //유저 아이디 있는지 확인하는 쿼리문
 
-    @Query(value = "SELECT * FROM user as u", nativeQuery = true) //TODO: ranking api
+    @Query(value = "SELECT u FROM User u ORDER BY u.score DESC") //TODO: ranking api
     List<User> findByRanking();
-
 }
