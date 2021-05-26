@@ -1,6 +1,7 @@
 package com.mse.ajouFlight.exception.handler;
 
-import com.mse.ajouFlight.exception.AleadyExistedUserIdException;
+import com.mse.ajouFlight.exception.AlreadyExistedFlightException;
+import com.mse.ajouFlight.exception.AlreadyExistedUserIdException;
 import com.mse.ajouFlight.exception.InCorrectPasswordException;
 import com.mse.ajouFlight.exception.NotExistedUserException;
 import com.mse.ajouFlight.exception.message.ErrorResponse;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(AleadyExistedUserIdException.class)
+    @ExceptionHandler(AlreadyExistedUserIdException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResponse handleAlreadyExistedUserIdException(AleadyExistedUserIdException ex){
+    public ErrorResponse handleAlreadyExistedUserIdException(AlreadyExistedUserIdException ex){
         return new ErrorResponse(HttpStatus.BAD_REQUEST,ex.getMessage());
     }
 
@@ -29,6 +30,14 @@ public class GlobalExceptionHandler {
     public ErrorResponse handleInCorrectPasswordException(InCorrectPasswordException ex){
         return new ErrorResponse(HttpStatus.BAD_REQUEST,ex.getMessage());
     }
+
+    @ExceptionHandler(AlreadyExistedFlightException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleAlreadyExistedFlightException(AlreadyExistedFlightException ex){
+        return new ErrorResponse(HttpStatus.BAD_REQUEST,ex.getMessage());
+    }
+
+
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

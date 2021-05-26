@@ -1,9 +1,6 @@
 package com.mse.ajouFlight.controller;
 
-import com.mse.ajouFlight.controller.dto.Token;
-import com.mse.ajouFlight.controller.dto.UserDto;
-import com.mse.ajouFlight.controller.dto.UserInfoRequestDto;
-import com.mse.ajouFlight.controller.dto.UserInfoResponseDto;
+import com.mse.ajouFlight.controller.dto.*;
 import com.mse.ajouFlight.message.ResponseMessage;
 import com.mse.ajouFlight.repository.UserRepository;
 import com.mse.ajouFlight.service.UserService;
@@ -48,6 +45,24 @@ public class UserController {
 
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "유저 정보가 갱신되었습니다."));
     }
+
+    //랭킹조회
+//    @GetMapping("/ranking")
+//    public ResponseEntity<ResponseMessage> getRanking(){
+//        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"랭킹 목록",userService.getRanking()));
+//    }
+
+    //전투기 추가
+    @PostMapping("/flight/{flightId}")
+    public ResponseEntity<ResponseMessage> postFlights(Authentication authentication, @PathVariable Long flightId){
+        Claims claims = (Claims) authentication.getPrincipal();
+        Long id = claims.get("id",Long.class);
+
+        userService.postFlights(id,flightId);
+
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.CREATED,"비행 추가 완료"));
+    }
+
 
 
 }

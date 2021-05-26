@@ -6,9 +6,11 @@ import com.mse.ajouFlight.controller.dto.UserInfoResponseDto;
 import com.mse.ajouFlight.domain.Flight;
 import com.mse.ajouFlight.domain.User;
 import com.mse.ajouFlight.domain.utils.JwtUtil;
-import com.mse.ajouFlight.exception.AleadyExistedUserIdException;
+import com.mse.ajouFlight.exception.AlreadyExistedFlightException;
+import com.mse.ajouFlight.exception.AlreadyExistedUserIdException;
 import com.mse.ajouFlight.exception.InCorrectPasswordException;
 import com.mse.ajouFlight.exception.NotExistedUserException;
+import com.mse.ajouFlight.repository.FlightRepository;
 import com.mse.ajouFlight.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -28,10 +30,14 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
+    private FlightRepository flightRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private JwtUtil jwtUtil;
+
 
     //회원가입
     public void createUser(String userId, String password){
@@ -39,7 +45,7 @@ public class UserService {
         Optional<User> existeduser = userRepository.findByUserId(userId);
 
         if(existeduser.isPresent()){
-            throw new AleadyExistedUserIdException();
+            throw new AlreadyExistedUserIdException();
         }
 
         String encodedPassword = passwordEncoder.encode(password);
@@ -96,5 +102,29 @@ public class UserService {
                 .money(user.getMoney())
                 .flights(flightsN)
                 .build();
+    }
+
+    //랭킹 조회
+    public List<User> getRanking(){
+        return userRepository.findByRanking();
+    }
+
+    //비행기 사기
+    public void postFlights(Long id, Long flightId) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new NotExistedUserException());
+
+        for(Flight flight: user.getFlights()){
+            if(flight.getFlightId() == flightId){
+                throw new AlreadyExistedFlightException();
+            }
+        }
+
+        Flight flight = Flight.builder()
+                .user(user)
+                .flightId(flightId)
+                .build();
+
+        flightRepository.save(flight);
     }
 }

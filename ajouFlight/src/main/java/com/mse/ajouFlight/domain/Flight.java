@@ -14,7 +14,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 public class Flight {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +23,4 @@ public class Flight {
     @ManyToOne
     @JsonBackReference
     private User user;
-
-
 }
