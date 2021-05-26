@@ -60,15 +60,11 @@ public class User {
             this.stage3= dto.isStage3();
         }
         if(dto.getScore()!=null){
-            this.score=dto.getScore();
+            this.score+=dto.getScore();
         }
         if(dto.getMoney()!=null){
-            this.money=dto.getMoney();
+            this.money+=dto.getMoney();
         }
 
     }
-
-
-
-
 }

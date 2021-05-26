@@ -31,6 +31,7 @@ public class SecurityjavaConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .headers().frameOptions().disable()
                 .and()
+                .addFilter(filter)
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 

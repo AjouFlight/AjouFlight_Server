@@ -26,9 +26,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserRepository userRepository;
-
     //회원가입
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
@@ -42,12 +39,10 @@ public class UserController {
     }
 
     //사용자정보갱신
-    @PutMapping()
+    @PutMapping
     public ResponseEntity<ResponseMessage> postUserInfo(Authentication authentication, @RequestBody UserInfoRequestDto dto){
         Claims claims = (Claims) authentication.getPrincipal();
         Long id = claims.get("id",Long.class);
-
-
 
         userService.postUserInfo(dto,id);
 

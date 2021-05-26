@@ -87,8 +87,6 @@ public class UserService {
                     .build());
         }
 
-
-
         return  UserInfoResponseDto.builder()
                 .token(token)
                 .stage1(user.isStage1())
