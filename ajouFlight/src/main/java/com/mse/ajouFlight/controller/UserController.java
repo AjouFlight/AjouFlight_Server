@@ -53,12 +53,12 @@ public class UserController {
     }
 
     //비행기 추가
-    @PostMapping("/flight/{flightId}")
-    public ResponseEntity<ResponseMessage> postFlights(Authentication authentication, @PathVariable Long flightId){
+    @PostMapping("/flight")
+    public ResponseEntity<ResponseMessage> postFlights(Authentication authentication, @RequestBody FlightDto dto){
         Claims claims = (Claims) authentication.getPrincipal();
         Long id = claims.get("id",Long.class);
 
-        userService.postFlights(id,flightId);
+        userService.postFlights(id,dto.getFlightId(),dto.getMoney());
 
         return ResponseEntity.ok(new ResponseMessage(HttpStatus.CREATED,"비행 추가 완료"));
     }

@@ -15,11 +15,7 @@ import java.util.List;
 public class UserInfoResponseDto {
     private String token;
 
-    private boolean stage1;
-
-    private boolean stage2;
-
-    private boolean stage3;
+    private Integer stage;
 
     private Integer score;
 

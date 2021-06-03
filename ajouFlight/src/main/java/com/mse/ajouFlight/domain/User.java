@@ -28,14 +28,8 @@ public class User {
 
     private String password;
 
-    @ColumnDefault("0")
-    private boolean stage1;
-
-    @ColumnDefault("0")
-    private boolean stage2;
-
-    @ColumnDefault("0")
-    private boolean stage3;
+    @ColumnDefault("1")
+    private Integer stage;
 
     @ColumnDefault("0")
     private Integer score;
@@ -48,14 +42,8 @@ public class User {
     private List<Flight> flights;
 
     public void modifyUser(UserInfoRequestDto dto){
-        if(dto.isStage1()){
-            this.stage1= dto.isStage1();
-        }
-        if(dto.isStage2()){
-            this.stage2= dto.isStage2();
-        }
-        if(dto.isStage3()){
-            this.stage3= dto.isStage3();
+        if(dto.getStage()!=null) {
+            this.stage = dto.getStage();
         }
         if(dto.getScore()!=null){
             this.score+=dto.getScore();

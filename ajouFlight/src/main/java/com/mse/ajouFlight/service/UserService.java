@@ -55,9 +55,7 @@ public class UserService {
                 .userId(userId)
                 .password(encodedPassword)
                 .score(0)
-                .stage1(false)
-                .stage2(false)
-                .stage3(false)
+                .stage(1)
                 .money(0)
                 .build();
 
@@ -96,9 +94,7 @@ public class UserService {
 
         return  UserInfoResponseDto.builder()
                 .token(token)
-                .stage1(user.isStage1())
-                .stage2(user.isStage2())
-                .stage3(user.isStage3())
+                .stage(user.getStage())
                 .score(user.getScore())
                 .money(user.getMoney())
                 .flights(flightsN)
@@ -122,9 +118,14 @@ public class UserService {
     }
 
     //비행기 사기
-    public void postFlights(Long id, Long flightId) {
+    public void postFlights(Long id, Long flightId, Integer money) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new NotExistedUserException());
+
+        if(user.getMoney()-money<0){
+            throw new RuntimeException();
+        }
+        user.setMoney(user.getMoney()-money);
 
         for(Flight flight: user.getFlights()){
             if(flight.getFlightId() == flightId){

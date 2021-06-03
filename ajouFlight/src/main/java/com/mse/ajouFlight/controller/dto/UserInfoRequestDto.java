@@ -19,10 +19,6 @@ public class UserInfoRequestDto {
 
     private Integer money;
 
-    private boolean stage1;
-
-    private boolean stage2;
-
-    private boolean stage3;
+    private Integer stage;
 
 }
