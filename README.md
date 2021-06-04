@@ -1,7 +1,7 @@
 # AjouFlight_Server
 
 ## Server Developers
-- YoungWoo Ryu 
+- YoungWoo Yoo 
 - Jinseok Hong
 
 ## Using Tech
@@ -14,7 +14,7 @@
 
 
   ## ERD
-![임시 ERD](./img/erd.png)
+  <img width="476" alt="erd" src="https://user-images.githubusercontent.com/63579113/120817654-d8e65880-c58c-11eb-8aed-56ab46d42664.png">
 
   ## Dependency
 ```
