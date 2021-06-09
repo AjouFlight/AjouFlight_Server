@@ -57,6 +57,7 @@ public class UserService {
                 .score(0)
                 .stage(1)
                 .money(0)
+                .skin(1)
                 .build();
 
         userRepository.save(user);
@@ -97,6 +98,7 @@ public class UserService {
                 .stage(user.getStage())
                 .score(user.getScore())
                 .money(user.getMoney())
+                .skin(user.getSkin())
                 .flights(flightsN)
                 .build();
     }

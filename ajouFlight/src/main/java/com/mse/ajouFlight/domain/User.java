@@ -37,6 +37,9 @@ public class User {
     @ColumnDefault("0")
     private Integer money;
 
+    @ColumnDefault("0")
+    private Integer skin;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @JsonManagedReference
     private List<Flight> flights;
@@ -51,6 +54,8 @@ public class User {
         if(dto.getMoney()!=null){
             this.money+=dto.getMoney();
         }
-
+        if(dto.getSkin()!=null){
+            this.skin = dto.getSkin();
+        }
     }
 }

@@ -21,6 +21,8 @@ public class UserInfoResponseDto {
 
     private Integer money;
 
+    private Integer skin;
+
     private List<FlightDto> flights;
 
 }

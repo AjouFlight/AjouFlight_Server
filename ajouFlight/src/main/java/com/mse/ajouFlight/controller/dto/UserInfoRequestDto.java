@@ -21,4 +21,6 @@ public class UserInfoRequestDto {
 
     private Integer stage;
 
+    private Integer skin;
+
 }
