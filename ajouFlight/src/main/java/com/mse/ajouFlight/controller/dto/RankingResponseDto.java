@@ -11,5 +11,5 @@ public class RankingResponseDto {
 
     private List<UserInfoResponseDto> top10;
     private Integer totalNum;
-    private Integer myLanking;
+    private Integer myRanking;
 }

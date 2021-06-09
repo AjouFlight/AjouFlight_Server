@@ -129,7 +129,7 @@ public class UserService {
         return RankingResponseDto.builder()
                 .totalNum(totalUsers.size())
                 .top10(topTenUsers)
-                .myLanking(myLanking)
+                .myRanking(myLanking)
                 .build();
     }
 
