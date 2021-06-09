@@ -57,7 +57,7 @@ public class UserService {
                 .score(0)
                 .stage(1)
                 .money(0)
-                .skin(1)
+                .skin(-1)
                 .build();
 
         userRepository.save(user);
@@ -104,19 +104,33 @@ public class UserService {
     }
 
     //랭킹 조회
-    public List<RankingResponseDto> getRanking(){
+    public RankingResponseDto getRanking(Long id){
         List<User> users =  userRepository.findByRanking();
+        List<User> totalUsers = userRepository.findAll();
 
-        List<RankingResponseDto> rankings = new ArrayList<>();
+        List<UserInfoResponseDto> topTenUsers = new ArrayList<>();
+        int myLanking=0;
+        for(int i=0; i<users.size(); i++){
+            if(i<10){
+                topTenUsers.add(UserInfoResponseDto.builder()
+                        .userId(users.get(i).getUserId())
+                        .score(users.get(i).getScore())
+                        .build());
+            }
+            if(users.get(i).getId().equals(id)){
+                myLanking = i+1;
+                if(i>=10){
+                    break;
+                }
+            }
 
-        for(int i=0; i<10; i++){
-            rankings.add(RankingResponseDto.builder()
-                    .userId(users.get(i).getUserId())
-                    .score(users.get(i).getScore())
-                    .build());
         }
 
-        return rankings;
+        return RankingResponseDto.builder()
+                .totalNum(totalUsers.size())
+                .top10(topTenUsers)
+                .myLanking(myLanking)
+                .build();
     }
 
     //비행기 사기

@@ -48,8 +48,11 @@ public class UserController {
 
     //랭킹조회
     @GetMapping("/ranking")
-    public ResponseEntity<ResponseMessage> getRanking(){
-        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"랭킹 목록",userService.getRanking()));
+    public ResponseEntity<ResponseMessage> getRanking(Authentication authentication){
+        Claims claims = (Claims) authentication.getPrincipal();
+        Long id = claims.get("id",Long.class);
+
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"랭킹 목록",userService.getRanking(id)));
     }
 
     //비행기 추가
