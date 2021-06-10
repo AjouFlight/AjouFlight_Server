@@ -29,7 +29,7 @@ public class LoginController {
 
         UserInfoResponseDto responseDto = userService.getUserInfo(dto.getUserId(),dto.getPassword());
 
-        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"로그인 성공", responseDto));
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"success", responseDto));
     }
 
 }

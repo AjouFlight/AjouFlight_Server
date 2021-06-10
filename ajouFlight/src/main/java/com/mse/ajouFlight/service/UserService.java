@@ -85,12 +85,10 @@ public class UserService {
         String token = jwtUtil.createToken(user.getId());
 
         List<Flight> flights = user.getFlights();
-        List<FlightDto> flightsN = new ArrayList<>();
+        List<Long> flightsN = new ArrayList<>();
 
         for(Flight flight:flights){
-            flightsN.add(FlightDto.builder()
-                    .flightId(flight.getFlightId())
-                    .build());
+            flightsN.add(flight.getFlightId());
         }
 
         return  UserInfoResponseDto.builder()

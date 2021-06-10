@@ -2,7 +2,7 @@ package com.mse.ajouFlight.exception;
 
 public class NotExistedUserException extends RuntimeException {
 
-    private static final String  message = "존재하지 않는 계정입니다";
+    private static final String  message = "This account does not exist";
     public NotExistedUserException(){
         super(message);
     }

@@ -42,7 +42,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleRuntimeException(RuntimeException ex){
-        return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,"error가 발생하였습니다");
+        return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,"An unknown error has occurred");
     }
 
 }

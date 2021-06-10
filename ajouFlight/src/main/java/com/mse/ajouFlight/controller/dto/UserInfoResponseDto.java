@@ -28,6 +28,6 @@ public class UserInfoResponseDto {
 
     private Integer skin;
 
-    private List<FlightDto> flights;
+    private List<Long> flights;
 
 }

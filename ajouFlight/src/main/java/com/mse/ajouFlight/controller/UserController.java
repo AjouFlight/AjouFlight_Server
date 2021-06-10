@@ -32,7 +32,7 @@ public class UserController {
 
         userService.createUser(userId, password);
 
-        return ResponseEntity.created(new URI("/register")).body(new ResponseMessage(HttpStatus.CREATED, "회원가입완료"));
+        return ResponseEntity.created(new URI("/register")).body(new ResponseMessage(HttpStatus.CREATED, "success"));
     }
 
     //사용자정보갱신
@@ -43,7 +43,7 @@ public class UserController {
 
         userService.postUserInfo(dto,id);
 
-        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "유저 정보가 갱신되었습니다."));
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK, "success"));
     }
 
     //랭킹조회
@@ -52,7 +52,7 @@ public class UserController {
         Claims claims = (Claims) authentication.getPrincipal();
         Long id = claims.get("id",Long.class);
 
-        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"랭킹 목록",userService.getRanking(id)));
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.OK,"success",userService.getRanking(id)));
     }
 
     //비행기 추가
@@ -63,6 +63,6 @@ public class UserController {
 
         userService.postFlights(id,dto.getFlightId(),dto.getMoney());
 
-        return ResponseEntity.ok(new ResponseMessage(HttpStatus.CREATED,"비행 추가 완료"));
+        return ResponseEntity.ok(new ResponseMessage(HttpStatus.CREATED,"success"));
     }
 }
