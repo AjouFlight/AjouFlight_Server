@@ -14,7 +14,7 @@
 
 
   ## ERD
-  <img width="476" alt="erd" src="https://user-images.githubusercontent.com/63579113/120817654-d8e65880-c58c-11eb-8aed-56ab46d42664.png">
+  <img width="476" alt="erd" src="https://user-images.githubusercontent.com/70695311/121670440-63c4d700-cae8-11eb-9db8-f49899035fc5.png">
 
   ## Dependency
 ```
